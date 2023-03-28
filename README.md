@@ -18,3 +18,46 @@
 9. Каждый элемент массива проверяем по условию: длинна элемента arr[i] <= maxSymbols. Если условие соблюдено, увеличиваем count на один. Если нет - переходим к проверке следующего элемента массива arr1[i+1].
 10. Заполняем новый массив arr2 в пределах цикла. Для этого повторно проводим проверку каждого элемента массива, чтобы длина элемента arr1[i] была больше или равна maxSymbols. Если условие соблюдено, элементу arr2[j] присваиваем соответствующее значение элемента arr1[i]. Записываем его в массив arr2. Если нет, переходим к проверке следующего элемента arr1[i+1].
 11. Выводим полученный массив arr2 на экран.
+
+Программа
+Console.Clear();
+Console.WriteLine("Введите количество элементов массива: ");
+int size = int.Parse(Console.ReadLine()!);
+
+string[] arr1 = new string[size];
+
+for (int i = 0; i < size; i++)
+{
+    Console.Write("Введите элемент массива: ");
+    string result = (Console.ReadLine()!);
+    arr1[i] = result;
+}
+Console.WriteLine();
+Console.Write("Введенный массив: [");
+Console.Write(string.Join(",", arr1));
+Console.Write("]");
+
+int count = 0;
+int maxSymbols = 3;
+
+for (int i = 0; i < arr1.Length; i++)
+{
+    if (arr1[i].Length <= maxSymbols)
+    {
+        count++;
+    }
+}
+Console.WriteLine();
+Console.Write("Полученный массив: [");
+string[] arr2 = new string[count];
+int j = 0;
+for (int i = 0; i < arr1.Length; i++)
+{
+    if (arr1[i].Length <= maxSymbols)
+    {
+        arr2[j] = arr1[i];
+        Console.Write(arr2[j] + ",");
+        j++;
+    }
+}
+Console.Write("]");
